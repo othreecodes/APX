@@ -20,23 +20,7 @@ apx start MySampleProject
 MySampleProject Being the name of your project
 
 ### Directory Structure
-
-
-   *---MysampleProject
-   
-    *---src
-       *---com
-       *---othree
-       *---sampleproject
-          *---models
-          *---views
-              *Mainview.fxml
-          *---providers
-          *---styles
-              *MainStylesheet.css
-          *---database
-              *db.sqlite
-          *---controllers
+![](http://i.imgur.com/a3mLiW0.png)
               
           
 
