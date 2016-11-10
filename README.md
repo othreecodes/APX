@@ -22,7 +22,15 @@ MySampleProject Being the name of your project
 ### Directory Structure
 ![](http://i.imgur.com/a3mLiW0.png)
               
-          
+The Project is Structured in such a way as to help you keep track of your where all files are being placed.
+*layout (FXML files) go in the views directory
+*controllers go in the controllers directory
+*Stylesheets go in the stylesheet directory
+
+You get the point eh?
+
+#### Heres the best part
+There's a project.apxprop file that marks the project as an apx project (Do Not delete
 
 
 
