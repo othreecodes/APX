@@ -36,6 +36,7 @@ The Project is Structured in such a way as to help you keep track of your where 
  - Stylesheets go in the stylesheet directory
 
 You get the point eh?
+Your Project can then be easily imported into your favourite IDE without stress
 
 ### Heres the best part
 There's a project.apxprop file that marks the project as an apx project (Do Not delete or Edit !!!)
