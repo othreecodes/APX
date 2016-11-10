@@ -5,6 +5,11 @@
  - requires Java jdk > 7 for windows
  - requres openjdk-7 or 8 and openjfx for linux
 
+## Clone the repo
+```sh
+git clone https://github.com/othreecodes/APX.git
+```
+
 #### Adding Directory to PATH
 After cloning the repo, Open the binaries folder and add the correct folder to path for your corresponing OS
 
