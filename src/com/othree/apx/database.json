@@ -1,0 +1,18 @@
+{
+    "table": "users",
+    "columns":[
+            {
+              "name":"name",
+              "type":"String",
+              "null":"true",
+              "unique":"false"
+            },
+            {
+              "name":"age",
+              "type":"Integer",
+              "null":"true",
+              "unique":"false"
+            }
+                          
+    ]
+}

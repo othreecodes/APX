@@ -1,0 +1,83 @@
+package com.othree.apx;
+
+ 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author root
+ */
+public class Main {
+
+    /**
+     * Main class that handles all the arguements from commandline
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        Operations operations = new Operations();
+
+         
+
+        //If the arguements are empty show sample usage
+        if (args.length < 1) {
+             System.out.println("\n\t\t\t\t\tSample Usage\n\n");
+            
+            System.out.println("\t\tapx start ${Projectname} - Creates a new Apx project\n");
+            System.out.println("\t\tapx g page ${PageName} - Creates a new page\n\t\twith the .fxml, .css and Controller files");
+            
+             
+        } else if (args[0].equalsIgnoreCase("start")) {
+            String projectName = args[1];
+            operations.startProject(projectName);
+        } else if (args[0].equalsIgnoreCase("g")) {
+            File f = new File("project.apxprop");
+            if (!f.exists()) {
+                System.out.println("Not an APX Project!!!\n");
+                
+                System.exit(0);
+            }
+            
+            try {
+                if (args[1].equalsIgnoreCase("page")) {
+                    try {
+                        operations.generatePage(args[2], f);
+                    } catch (Exception e) {
+                        System.out.println("Parameters not complete!\n");
+                        
+                    }
+                    
+                }
+            } catch (Exception e) {
+                System.out.println("Parameters not complete!\n");
+                 
+            }
+            
+        } else if (args[0].equalsIgnoreCase("create")) {
+            File f = new File("project.apxprop");
+            if (!f.exists()) {
+                System.out.println("Not an APX Project!!!\n");
+                
+                System.exit(0);
+            }
+            
+            if (args[1].equalsIgnoreCase("table")) {
+                
+                //File loction of the json file Containing the Json File to 
+                String fileLocation = args[2];
+                try {
+                    operations.tableFromJson(fileLocation, f);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
+            
+        }
+        
+    }
+    
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<!--
+genarated by APX file generation template 
+file name : apxmarkup.fxml
+--> 
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" id="AnchorPane" prefHeight="400.0" styleClass="apxmarkupClass" prefWidth="600.0" fx:controller="package.apxmarkupController" >
+    
+     <stylesheets>
+        <URL value="@../styles/apxmarkupStylesheet.css"/>
+    </stylesheets>
+    
+</AnchorPane>

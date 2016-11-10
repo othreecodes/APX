@@ -1,0 +1,18 @@
+
+
+import com.othree.apx.
+@apxTable(name = "users")
+public class models {
+
+     
+    String name;
+  
+    public String rec() {
+        
+    return this.getClass().getAnnotation(apxTable.class).name();   
+    
+
+}
+    
+    
+}
