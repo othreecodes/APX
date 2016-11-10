@@ -1,2 +1,2 @@
-# APX
-A Javafx Library for building MVC Applications.
+![](http://i.imgur.com/qkiAZJi.png)![](https://img.shields.io/badge/othree-codes-yellowgreen.svg)
+
