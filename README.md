@@ -20,7 +20,10 @@ apx start MySampleProject
 MySampleProject Being the name of your project
 
 ### Directory Structure
-*---MysampleProject
+
+
+   *---MysampleProject
+   
     *---src
        *---com
        *---othree
