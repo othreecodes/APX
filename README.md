@@ -1,5 +1,5 @@
 ![](http://i.imgur.com/qkiAZJi.png)
-# A JavaFx Library For Making MVC Type Desktop Applications![](https://img.shields.io/badge/othree-codes-yellowgreen.svg)
+# A JavaFx Library For Making MVC Type Desktop Applications ![](https://img.shields.io/badge/othree-codes-yellowgreen.svg) ![](https://scrutinizer-ci.com/g/othreecodes/APX/badges/build.png?b=master)
 
 ### Installation
  - requires Java jdk > 7 for windows
