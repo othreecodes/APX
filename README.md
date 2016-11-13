@@ -5,7 +5,12 @@
  - requires Java jdk > 7 for windows
  - requres openjdk-7 or 8 and openjfx for linux
 
-## Clone the repo
+### Download the Binaries and Jar file
+ - [apx.exe for Windows OS](https://github.com/othreecodes/APX/releases/download/v0.0.1/apx.exe)
+ - [apx for Linux](https://github.com/othreecodes/APX/releases/download/v0.0.1/apx.exe)
+ - [apx.jar Library (Compulsory)](https://github.com/othreecodes/APX/releases/download/v0.0.1/apx.jar)
+
+## Or Clone the repo
 ```sh
 git clone https://github.com/othreecodes/APX.git
 ```
