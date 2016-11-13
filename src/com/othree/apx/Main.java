@@ -46,13 +46,14 @@ public class Main {
                     try {
                         operations.generatePage(args[2], f);
                     } catch (Exception e) {
-                        System.out.println("Parameters not complete!\n");
-                        
+                        System.out.println("Exception at ");
+                        e.printStackTrace();
                     }
                     
                 }
             } catch (Exception e) {
-                System.out.println("Parameters not complete!\n");
+                System.out.println("Exception at ");
+                e.printStackTrace();
                  
             }
             

@@ -1,9 +1,19 @@
 ![](http://i.imgur.com/qkiAZJi.png)
-# A JavaFx Library For Making MVC Type Applications![](https://img.shields.io/badge/othree-codes-yellowgreen.svg)
+# A JavaFx Library For Making MVC Type Desktop Applications ![](https://img.shields.io/badge/othree-codes-yellowgreen.svg) ![](https://scrutinizer-ci.com/g/othreecodes/APX/badges/build.png?b=master)
 
 ### Installation
  - requires Java jdk > 7 for windows
  - requres openjdk-7 or 8 and openjfx for linux
+
+### Download the Binaries and Jar file
+ - [apx.exe for Windows OS](https://github.com/othreecodes/APX/releases/download/v0.0.1/apx.exe)
+ - [apx for Linux](https://github.com/othreecodes/APX/releases/download/v0.0.1/apx.exe)
+ - [apx.jar Library (Compulsory)](https://github.com/othreecodes/APX/releases/download/v0.0.1/apx.jar)
+
+## Or Clone the repo
+```sh
+git clone https://github.com/othreecodes/APX.git
+```
 
 #### Adding Directory to PATH
 After cloning the repo, Open the binaries folder and add the correct folder to path for your corresponing OS
@@ -36,6 +46,7 @@ The Project is Structured in such a way as to help you keep track of your where 
  - Stylesheets go in the stylesheet directory
 
 You get the point eh?
+Your Project can then be easily imported into your favourite IDE without stress
 
 ### Heres the best part
 There's a project.apxprop file that marks the project as an apx project (Do Not delete or Edit !!!)

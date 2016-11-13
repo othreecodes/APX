@@ -4,6 +4,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.stream.JsonReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -33,9 +35,9 @@ public class Operations {
     String PROJECT_WORK_DIR = "";
 
     /**
-     * 
+     *
      * @param projectName The name of the project to create
-     * 
+     *
      */
     public void startProject(String projectName) {
         PROJECT_NAME = projectName;
@@ -116,18 +118,40 @@ public class Operations {
     }
 
     public void createPropertiesFile() throws IOException {
-        File props = new File(PROJECT_ROOT + "project.apxprop");
-        props.createNewFile();
-        props.setWritable(true);
-        FileWriter pWriter = new FileWriter(props);
-        pWriter.write("{ " + "\n");
-        pWriter.write("\"name\": \"" + PROJECT_NAME + "\",\n");
-        pWriter.write("\"package\": \"" + PACKAGE_NAME + "\",\n");
-        pWriter.write("\"location\": \"" + PROJECT_ROOT + "\",\n");
-        pWriter.write("\"src\": \"" + PROJECT_SRC + "\",\n");
-        pWriter.write("\"work\": \"" + PROJECT_WORK_DIR + "\"\n");
-        pWriter.write("}");
-        pWriter.close();
+        //If not windows OS
+        if (!System.getProperty("os.name").toLowerCase().contains("win")) {
+            File props = new File(PROJECT_ROOT + "project.apxprop");
+            props.createNewFile();
+            props.setWritable(true);
+            FileWriter pWriter = new FileWriter(props);
+            pWriter.write("{ " + "\n");
+            pWriter.write("\"name\": \"" + PROJECT_NAME + "\",\n");
+            pWriter.write("\"package\": \"" + PACKAGE_NAME + "\",\n");
+            pWriter.write("\"location\": \"" + PROJECT_ROOT + "\",\n");
+            pWriter.write("\"src\": \"" + PROJECT_SRC + "\",\n");
+            pWriter.write("\"work\": \"" + PROJECT_WORK_DIR + "\"\n");
+            pWriter.write("}");
+            pWriter.close();
+
+        }
+        //Now for the windows OS we need to escape '\' as '\\' before storing the project props
+        else{
+            File props = new File(PROJECT_ROOT + "project.apxprop");
+            props.createNewFile();
+            props.setWritable(true);
+            FileWriter pWriter = new FileWriter(props);
+            pWriter.write("{ " + "\n");
+            pWriter.write("\"name\": \"" + PROJECT_NAME.replace("\\", "\\\\") + "\",\n");
+            pWriter.write("\"package\": \"" + PACKAGE_NAME.replace("\\", "\\\\") + "\",\n");
+            pWriter.write("\"location\": \"" + PROJECT_ROOT.replace("\\", "\\\\") + "\",\n");
+            pWriter.write("\"src\": \"" + PROJECT_SRC.replace("\\", "\\\\") + "\",\n");
+            pWriter.write("\"work\": \"" + PROJECT_WORK_DIR.replace("\\", "\\\\") + "\"\n");
+            pWriter.write("}");
+            pWriter.close();
+        
+        }
+        
+        
 
     }
 
@@ -206,8 +230,11 @@ public class Operations {
 
         try {
             JsonParser parser = new JsonParser();
-            JsonElement ele = parser.parse(new FileReader(propd));
-
+            //Create a new Instance of JSONReader
+            JsonReader read = new JsonReader(new FileReader(propd));
+            //Path Bug in windows Throws malformed JSON Exception
+            read.setLenient(true);
+            JsonElement ele = parser.parse(read);
             JsonObject prop = ele.getAsJsonObject();
 
             String work = prop.get("work").getAsString();
@@ -222,8 +249,8 @@ public class Operations {
             PROJECT_SRC = src;
             PROJECT_ROOT = location;
 
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Operations.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JsonSyntaxException | FileNotFoundException js) {
+            Logger.getLogger(Operations.class.getName()).log(Level.SEVERE, null, js);
         }
 
     }
@@ -269,7 +296,7 @@ public class Operations {
             params.setIsUnique(obj.get("unique").getAsBoolean());
             columns.add(params);
         }
-        System.out.println("Creating table ---"+dbfile.getAsJsonPrimitive("table").getAsString());
+        System.out.println("Creating table ---" + dbfile.getAsJsonPrimitive("table").getAsString());
         createTable(dbfile.getAsJsonPrimitive("table").getAsString(), columns);
 
     }
