@@ -68,7 +68,7 @@ NB: No need to download the jDBC sqlite Driver. Its already included in apx.jar
 ```sh
 apx create model database.json
 ```
-The next parameter after table is the file location of the json file to read from
+The next parameter after model is the file location of the json file to read from
 ##### sample database.json
 ```json
 {
