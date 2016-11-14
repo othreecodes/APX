@@ -18,6 +18,8 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
+        
+        System.out.println(System.getProperty("os.name"));
         Operations operations = new Operations();
 
          
@@ -28,6 +30,7 @@ public class Main {
             
             System.out.println("\t\tapx start ${Projectname} - Creates a new Apx project\n");
             System.out.println("\t\tapx g page ${PageName} - Creates a new page\n\t\twith the .fxml, .css and Controller files");
+            System.out.println("\t\tapx create model ${Location of JSON File} - Creates a model corresponding\n\t\tto the JSON. Also creates a matching table in database");
             
              
         } else if (args[0].equalsIgnoreCase("start")) {
@@ -65,7 +68,7 @@ public class Main {
                 System.exit(0);
             }
             
-            if (args[1].equalsIgnoreCase("table")) {
+            if (args[1].equalsIgnoreCase("model")) {
                 
                 //File loction of the json file Containing the Json File to 
                 String fileLocation = args[2];

@@ -36,6 +36,7 @@ public class SQLParams {
     }
 
     public void setIsNull(boolean isNull) {
+     
         this.isNull = isNull;
     }
 
