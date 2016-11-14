@@ -57,7 +57,7 @@ public class Database {
     
     public boolean createTable(String where,String query) {
 
-        boolean done = false;
+        boolean done = true;
         try {
             // db parameters
             String url = "jdbc:sqlite:" + where;
@@ -65,12 +65,11 @@ public class Database {
             conn = DriverManager.getConnection(url);
             pt = conn.prepareStatement(query);
             
-            done = pt.execute();
-            if(done){
-            System.out.println("Operation Completed");
+            pt.execute();
             
-            }
+            
         } catch (SQLException e) {
+            done = false;
             System.out.println(e.getMessage());
         } finally {
             try {
@@ -81,6 +80,10 @@ public class Database {
                 }
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
+            }
+            if(done){
+            System.out.println("Operation Completed");
+            
             }
         }
         return done;

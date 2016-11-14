@@ -6,9 +6,8 @@
  - requres openjdk-7 or 8 and openjfx for linux
 
 ### Download the Binaries and Jar file
- - [apx.exe for Windows OS](https://github.com/othreecodes/APX/releases/download/v0.0.1/apx.exe)
- - [apx for Linux](https://github.com/othreecodes/APX/releases/download/v0.0.1/apx.exe)
- - [apx.jar Library (Compulsory)](https://github.com/othreecodes/APX/releases/download/v0.0.1/apx.jar)
+ - [apx + apx.jar Linux (.tar.gz file)](https://github.com/othreecodes/APX/releases/download/v0.0.2/apx-linux.tar.xz)
+ - [apx.exe + apx.jar for for Windows OS (.7z file) ](https://github.com/othreecodes/APX/releases/download/v0.0.2/apx-windows.7z)
 
 ## Or Clone the repo
 ```sh
@@ -34,7 +33,7 @@ MySampleProject Being the name of your project
 NB: Do not use java keywords to create a project
 
 ### Directory Structure
-![](http://i.imgur.com/a3mLiW0.png)
+![](http://i.imgur.com/Krwj9qM.png)
               
 The Project is Structured in such a way as to help you keep track of your where all files are being placed.
 
@@ -67,35 +66,169 @@ This will generate 3 files.
 [Using Sqlite with Java](http://www.sqlitetutorial.net/sqlite-java/)
 NB: No need to download the jDBC sqlite Driver. Its already included in apx.jar
 ```sh
-apx create table database.json
+apx create model database.json
 ```
 The next parameter after table is the file location of the json file to read from
 ##### sample database.json
 ```json
 {
-    "table": "users",
-    "columns":[
-            {
-              "name":"name",
-              "type":"String",
-              "null":"true",
-              "unique":"false"
-            },
-            {
-              "name":"age",
-              "type":"Integer",
-              "null":"true",
-              "unique":"false"
-            }
-                          
-    ]
+    "table": "user",
+    "properties": {
+        "username": {
+            "type": "string",
+            "null": true,
+            "unique": true,
+            "default":"Anonymous",
+            "title":"The Username of the LoggedIn individual",
+            "description":"Whatever This is meant to do"
+        },
+        "pin": {
+            "type": "integer",
+             "null": true,
+            "unique": false,
+            "default":1234
+        },
+        "number": {
+            "type":"number",
+             "null": true,
+            "unique": false
+        }
+
+    }
 }
 
 ```
-This command will create a single Table with corresponding columns
-(NB: I Plan to automatically create models matching to the table being created in a future release)
+will generate 
+```java
 
-## Why is apx.jar 4mb?
+package com.othree.apx;
+
+import com.google.gson.annotations.SerializedName;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
+@DatabaseTable(tableName = "user")
+public class User {
+
+    /**
+     * This is compulsory for both the database and to access models
+     * 
+     */
+    @DatabaseField(generatedId = true, columnName = "id")
+    @SerializedName("id")
+    private int id;
+    /**
+     * The Username of the LoggedIn individual
+     * <p>
+     * Whatever This is meant to do
+     * 
+     */
+    @DatabaseField(columnName = "username", canBeNull = true, unique = true)
+    @SerializedName("username")
+    private String username = "Anonymous";
+    @DatabaseField(columnName = "pin", canBeNull = true, unique = false)
+    @SerializedName("pin")
+    private int pin = 1234;
+    @DatabaseField(columnName = "number", canBeNull = true, unique = false)
+    @SerializedName("number")
+    private double number;
+
+    /**
+     * No args constructor for use in serialization
+     * 
+     */
+    public User() {
+    }
+
+    /**
+     * 
+     * @param number
+     * @param pin
+     * @param username
+     */
+    public User(String username, int pin, double number) {
+        super();
+        this.username = username;
+        this.pin = pin;
+        this.number = number;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+    }
+
+    /**
+     * The Username of the LoggedIn individual
+     * <p>
+     * Whatever This is meant to do
+     * 
+     * @return
+     *     The username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * The Username of the LoggedIn individual
+     * <p>
+     * Whatever This is meant to do
+     * 
+     * @param username
+     *     The username
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * 
+     * @return
+     *     The pin
+     */
+    public int getPin() {
+        return pin;
+    }
+
+    /**
+     * 
+     * @param pin
+     *     The pin
+     */
+    public void setPin(int pin) {
+        this.pin = pin;
+    }
+
+    /**
+     * 
+     * @return
+     *     The number
+     */
+    public double getNumber() {
+        return number;
+    }
+
+    /**
+     * 
+     * @param number
+     *     The number
+     */
+    public void setNumber(double number) {
+        this.number = number;
+    }
+
+}
+
+
+```
+
+This command will create a single Table with corresponding columns
+And also create a model file as seen above
+
+## Why is apx.jar ~7mb?
 This is because in contains certain libraries needed for a simple MVC REST applictaion 
 
   1. GSON: A Java serialization/deserialization library that can convert Java Objects into JSON and back.
@@ -103,12 +236,18 @@ This is because in contains certain libraries needed for a simple MVC REST appli
   2. SQLite JDBC Driver: SQLite JDBC, developed by Taro L. Saito, is a library for accessing and creating SQLite database files   in Java. link to project [Xserial SQLite JDBC](https://github.com/xerial/sqlite-jdbc)
   3. Unirest: Unirest in Java: Simplified, lightweight HTTP client library. http://unirest.io/java
   link to project [Mashape Unirest-java](https://github.com/Mashape/unirest-java)
+  4. ORMLite Database Library [ORMlite.com](http://ormlite.com/)
+  5. JSONSchema2pojo Generates Java types from JSON Schema (or example JSON) and annotates those types for data-binding with Jackson 1.x or 2.x, Gson, etc http://www.jsonschema2pojo.org   [Project Link](https://github.com/joelittlejohn/jsonschema2pojo)
   
 All Libraries Remain work of the original Author
 
+### Useful Links and resources
+ - [ORM Lite Documantation](http://ormlite.com/javadoc/ormlite-core/doc-files/ormlite_2.html#Class-Setup)
+ - [JSONSchema2pojo Wiki reference](https://github.com/joelittlejohn/jsonschema2pojo/wiki/Reference)
+ 
 ### Todos
 
- - Generate Models
+ - Generate Models (done)
  - Include support for Other databases
  - Make http connections neater
  - A lot...

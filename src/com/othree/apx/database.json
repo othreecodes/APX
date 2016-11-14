@@ -1,18 +1,27 @@
+
 {
-    "table": "users",
-    "columns":[
-            {
-              "name":"name",
-              "type":"String",
-              "null":"true",
-              "unique":"false"
-            },
-            {
-              "name":"age",
-              "type":"Integer",
-              "null":"true",
-              "unique":"false"
-            }
-                          
-    ]
+    "table": "user",
+    "id":true,
+    "properties": {
+        "username": {
+            "type": "string",
+            "null": true,
+            "unique": true,
+            "default":"Anonymous",
+            "title":"The Username of the LoggedIn individual",
+            "description":"Whatever This is meant to do"
+        },
+        "pin": {
+            "type": "integer",
+             "null": true,
+            "unique": false,
+            "default":1234
+        },
+        "number": {
+            "type":"number",
+             "null": true,
+            "unique": false
+        }
+
+    }
 }

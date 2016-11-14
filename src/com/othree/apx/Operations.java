@@ -1,33 +1,47 @@
 package com.othree.apx;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.stream.JsonReader;
+import com.sun.codemodel.JCodeModel;
+import com.sun.codemodel.JType;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.DirectoryNotEmptyException;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.jsonschema2pojo.DefaultGenerationConfig;
+import org.jsonschema2pojo.GenerationConfig;
+import org.jsonschema2pojo.GsonAnnotator;
+import org.jsonschema2pojo.SchemaGenerator;
+import org.jsonschema2pojo.SchemaMapper;
+import org.jsonschema2pojo.SchemaStore;
+import org.jsonschema2pojo.SourceType;
+import org.jsonschema2pojo.rules.RuleFactory;
 
 /**
  *
  * @author root
  */
+//WOE TO ALL YE WHO ENTER HERE
 public class Operations {
 
     //All Project Directories
-    String PROJECT_DIRS[] = {"models", "views", "controllers", "database", "http", "styles", "providers"};
+    String PROJECT_DIRS[] = {"models", "views", "controllers", "styles", "providers"};
     String PROJECT_NAME = "";
     String PACKAGE_NAME = "";
     String PROJECT_ROOT = "";
@@ -118,6 +132,21 @@ public class Operations {
     }
 
     public void createPropertiesFile() throws IOException {
+        Properties prop = new Properties();
+        OutputStream output = null;
+
+        output = new FileOutputStream(PROJECT_ROOT+"config.properties");
+
+        // set the properties value
+        prop.setProperty("database", "localhost");
+        prop.setProperty("dbuser", "mkyong");
+        prop.setProperty("dbpassword", "password");
+
+        // save properties to project root folder
+        prop.store(output, null);
+
+        output.close();
+
         //If not windows OS
         if (!System.getProperty("os.name").toLowerCase().contains("win")) {
             File props = new File(PROJECT_ROOT + "project.apxprop");
@@ -133,9 +162,8 @@ public class Operations {
             pWriter.write("}");
             pWriter.close();
 
-        }
-        //Now for the windows OS we need to escape '\' as '\\' before storing the project props
-        else{
+        } //Now for the windows OS we need to escape '\' as '\\' before storing the project props
+        else {
             File props = new File(PROJECT_ROOT + "project.apxprop");
             props.createNewFile();
             props.setWritable(true);
@@ -148,10 +176,8 @@ public class Operations {
             pWriter.write("\"work\": \"" + PROJECT_WORK_DIR.replace("\\", "\\\\") + "\"\n");
             pWriter.write("}");
             pWriter.close();
-        
+
         }
-        
-        
 
     }
 
@@ -271,7 +297,7 @@ public class Operations {
     void createDatabase() {
 
         Database db = new Database();
-        db.create(PROJECT_WORK_DIR + "database" + File.separatorChar + "db.sqlite");
+        db.create(PROJECT_ROOT +"db.sqlite");
         db.closeDB();
 
     }
@@ -285,23 +311,25 @@ public class Operations {
 
         JsonObject dbfile = ele.getAsJsonObject();
 
-        JsonArray array = dbfile.getAsJsonArray("columns");
+        JsonObject obj = dbfile.getAsJsonObject("properties");
 
-        for (int i = 0; i < array.size(); i++) {
-            JsonObject obj = array.get(i).getAsJsonObject();
+        obj.entrySet();
+        for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
+
             SQLParams params = new SQLParams();
-            params.setName(obj.get("name").getAsString().replace(" ", "_"));
-            params.setType(obj.get("type").getAsString());
-            params.setIsNull(obj.get("null").getAsBoolean());
-            params.setIsUnique(obj.get("unique").getAsBoolean());
+            params.setName(entry.getKey());
+            params.setType(obj.get(entry.getKey()).getAsJsonObject().get("type").getAsString());
+            params.setIsNull(obj.get(entry.getKey()).getAsJsonObject().get("null").getAsBoolean());
+            params.setIsUnique(obj.get(entry.getKey()).getAsJsonObject().get("unique").getAsBoolean());
             columns.add(params);
+
         }
-        System.out.println("Creating table ---" + dbfile.getAsJsonPrimitive("table").getAsString());
-        createTable(dbfile.getAsJsonPrimitive("table").getAsString(), columns);
+        System.out.println("Creating table --- " + dbfile.getAsJsonPrimitive("table").getAsString());
+        createTable(dbfile.getAsJsonPrimitive("table").getAsString(), columns, new File(src));
 
     }
 
-    public void createTable(String tableName, ObservableList<SQLParams> lParamses) {
+    public void createTable(String tableName, ObservableList<SQLParams> lParamses, File jsonFile) {
         StringBuilder sqlQuery = new StringBuilder();
         sqlQuery.append("CREATE TABLE ")
                 .append(tableName)
@@ -335,7 +363,75 @@ public class Operations {
         System.out.println("SQL query");
         System.out.println(sqlQuery.toString());
 
-        new Database().createTable(PROJECT_WORK_DIR + "database" + File.separatorChar + "db.sqlite", sqlQuery.toString());
+        boolean done = new Database().createTable(PROJECT_ROOT + "db.sqlite", sqlQuery.toString());
+        if (done) {
+            System.out.println("Creating models now");
+            try {
+                createModel(jsonFile, tableName);
+            } catch (IOException ex) {
+                Logger.getLogger(Operations.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    public void createModel(File jsonFile, String modelName) throws IOException {
+
+        //CapFirst for java classes
+        modelName = modelName.substring(0, 1).toUpperCase() + modelName.substring(1);
+        System.out.println("Model name :"+modelName);
+        JCodeModel codeModel = new JCodeModel();
+        GenerationConfig config = new DefaultGenerationConfig() {
+
+            @Override
+            public boolean isIncludeConstructors() {
+                return true;
+            }
+
+            @Override
+            public boolean isUseDoubleNumbers() {
+                return true;
+            }
+
+            @Override
+            public boolean isUsePrimitives() {
+                return true;
+            }
+
+            @Override
+            public boolean isIncludeToString() {
+                return false;
+            }
+
+            @Override
+            public boolean isIncludeHashcodeAndEquals() {
+                return false;
+            }
+
+            @Override
+            public boolean isIncludeAdditionalProperties() {
+                return false;
+
+            }
+
+            @Override
+            public Class<? extends RuleFactory> getCustomRuleFactory() {
+                return APXCustomRuleFactory.class;
+            }
+
+        };
+
+        
+
+        SchemaMapper mapper = new SchemaMapper(new APXCustomRuleFactory(config, new ORMLiteAnotator(), new SchemaStore()), new SchemaGenerator());
+
+        JType m = mapper.generate(codeModel, modelName, PACKAGE_NAME + ".models", jsonFile.toURI().toURL());
+
+         
+        File f = new File(PROJECT_SRC);
+        codeModel.build(f);
+        System.out.print("Model created at :");
+        System.out.println(m.fullName().replace('.', File.separatorChar) + ".java");
+
     }
 
     private class Role extends HashMap<Object, Object> {
@@ -353,7 +449,7 @@ public class Operations {
 
         @Override
         public Object get(Object key) {
-            return super.get(key); //To change body of generated methods, choose Tools | Templates.
+            return super.get(key);
         }
 
     }
