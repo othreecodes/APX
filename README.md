@@ -13,6 +13,9 @@
 ```sh
 git clone https://github.com/othreecodes/APX.git
 ```
+## Demo Project
+For a sample project check out this repo
+[othreecodes/apxdemo](https://github.com/othreecodes/apxdemo)
 
 #### Adding Directory to PATH
 After cloning the repo, Open the binaries folder and add the correct folder to path for your corresponing OS
@@ -244,6 +247,7 @@ All Libraries Remain work of the original Author
 ### Useful Links and resources
  - [ORM Lite Documantation](http://ormlite.com/javadoc/ormlite-core/doc-files/ormlite_2.html#Class-Setup)
  - [JSONSchema2pojo Wiki reference](https://github.com/joelittlejohn/jsonschema2pojo/wiki/Reference)
+ - [othreecodes/apxdemo (Demo)](https://github.com/othreecodes/apxdemo)
  
 ### Todos
 
