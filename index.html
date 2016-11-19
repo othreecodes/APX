@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Apx by othreecodes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Apx</h1>
+      <h2 class="project-tagline">A Javafx Library for building MVC Applications.</h2>
+      <a href="https://github.com/othreecodes/APX" class="btn">View on GitHub</a>
+      <a href="https://github.com/othreecodes/APX/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/othreecodes/APX/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <p><img src="http://i.imgur.com/qkiAZJi.png" alt=""></p>
+
+<h1>
+<a id="a-javafx-library-for-making-mvc-type-desktop-applications--" class="anchor" href="#a-javafx-library-for-making-mvc-type-desktop-applications--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>A JavaFx Library For Making MVC Type Desktop Applications <img src="https://img.shields.io/badge/othree-codes-yellowgreen.svg" alt=""> <img src="https://scrutinizer-ci.com/g/othreecodes/APX/badges/build.png?b=master" alt="">
+</h1>
+
+<h3>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h3>
+
+<ul>
+<li>requires Java jdk &gt; 7 for windows</li>
+<li>requres openjdk-7 or 8 and openjfx for linux</li>
+</ul>
+
+<h3>
+<a id="download-the-binaries-and-jar-file" class="anchor" href="#download-the-binaries-and-jar-file" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Download the Binaries and Jar file</h3>
+
+<ul>
+<li><a href="https://github.com/othreecodes/APX/releases/download/v0.0.2/apx-linux.tar.xz">apx + apx.jar Linux (.tar.gz file)</a></li>
+<li><a href="https://github.com/othreecodes/APX/releases/download/v0.0.2/apx-windows.7z">apx.exe + apx.jar for for Windows OS (.7z file) </a></li>
+</ul>
+
+<h2>
+<a id="or-clone-the-repo" class="anchor" href="#or-clone-the-repo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Or Clone the repo</h2>
+
+<div class="highlight highlight-source-shell"><pre>git clone https://github.com/othreecodes/APX.git</pre></div>
+
+<h2>
+<a id="demo-project" class="anchor" href="#demo-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Demo Project</h2>
+
+<p>For a sample project check out this repo
+<a href="https://github.com/othreecodes/apxdemo">othreecodes/apxdemo</a></p>
+
+<h4>
+<a id="adding-directory-to-path" class="anchor" href="#adding-directory-to-path" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adding Directory to PATH</h4>
+
+<p>After cloning the repo, Open the binaries folder and add the correct folder to path for your corresponing OS</p>
+
+<ul>
+<li><p><a href="http://unix.stackexchange.com/questions/26047/how-to-correctly-add-a-path-to-path">How to add a directory to path (Linux)</a></p></li>
+<li><p><a href="http://windowsitpro.com/systems-management/how-can-i-add-new-folder-my-system-path">How to add a directory to path (Windows)</a></p></li>
+</ul>
+
+<p>Also, You will need to add the apx.jar file to your library class path</p>
+
+<h3>
+<a id="starting-a-new-project" class="anchor" href="#starting-a-new-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Starting a new project</h3>
+
+<p>Open a terminal (cmd for windows users) in the directory in which you want to start the project and run</p>
+
+<div class="highlight highlight-source-shell"><pre>apx start MySampleProject</pre></div>
+
+<p>MySampleProject Being the name of your project
+NB: Do not use java keywords to create a project</p>
+
+<h3>
+<a id="directory-structure" class="anchor" href="#directory-structure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Directory Structure</h3>
+
+<p><img src="http://i.imgur.com/Krwj9qM.png" alt=""></p>
+
+<p>The Project is Structured in such a way as to help you keep track of your where all files are being placed.</p>
+
+<ul>
+<li><p>layout (FXML files) go in the views directory</p></li>
+<li><p>controllers go in the controllers directory</p></li>
+<li><p>Stylesheets go in the stylesheet directory</p></li>
+</ul>
+
+<p>You get the point eh?
+Your Project can then be easily imported into your favourite IDE without stress</p>
+
+<h3>
+<a id="heres-the-best-part" class="anchor" href="#heres-the-best-part" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Heres the best part</h3>
+
+<p>There's a project.apxprop file that marks the project as an apx project (Do Not delete or Edit !!!)
+It contains basic info about your project. With that in place, you can</p>
+
+<h4>
+<a id="generate-pages" class="anchor" href="#generate-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Generate pages</h4>
+
+<div class="highlight highlight-source-shell"><pre>apx g page Login</pre></div>
+
+<p>This will generate 3 files.</p>
+
+<ul>
+<li>A LoginView.fxml automatically Linked to</li>
+<li>A LoginController.java</li>
+<li>A LoginStylesheet.css already linked to the LoginView.fxml</li>
+</ul>
+
+<h4>
+<a id="create-tables-in-database-dbsqlite" class="anchor" href="#create-tables-in-database-dbsqlite" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create tables in database (db.sqlite)</h4>
+
+<p><a href="http://www.sqlitetutorial.net/sqlite-java/">Using Sqlite with Java</a>
+NB: No need to download the jDBC sqlite Driver. Its already included in apx.jar</p>
+
+<div class="highlight highlight-source-shell"><pre>apx create model database.json</pre></div>
+
+<p>The next parameter after model is the file location of the json file to read from</p>
+
+<h5>
+<a id="sample-databasejson" class="anchor" href="#sample-databasejson" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>sample database.json</h5>
+
+<div class="highlight highlight-source-json"><pre>{
+    <span class="pl-s"><span class="pl-pds">"</span>table<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>user<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>properties<span class="pl-pds">"</span></span>: {
+        <span class="pl-s"><span class="pl-pds">"</span>username<span class="pl-pds">"</span></span>: {
+            <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>string<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>null<span class="pl-pds">"</span></span>: <span class="pl-c1">true</span>,
+            <span class="pl-s"><span class="pl-pds">"</span>unique<span class="pl-pds">"</span></span>: <span class="pl-c1">true</span>,
+            <span class="pl-s"><span class="pl-pds">"</span>default<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Anonymous<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>title<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>The Username of the LoggedIn individual<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Whatever This is meant to do<span class="pl-pds">"</span></span>
+        },
+        <span class="pl-s"><span class="pl-pds">"</span>pin<span class="pl-pds">"</span></span>: {
+            <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>integer<span class="pl-pds">"</span></span>,
+             <span class="pl-s"><span class="pl-pds">"</span>null<span class="pl-pds">"</span></span>: <span class="pl-c1">true</span>,
+            <span class="pl-s"><span class="pl-pds">"</span>unique<span class="pl-pds">"</span></span>: <span class="pl-c1">false</span>,
+            <span class="pl-s"><span class="pl-pds">"</span>default<span class="pl-pds">"</span></span>:<span class="pl-c1">1234</span>
+        },
+        <span class="pl-s"><span class="pl-pds">"</span>number<span class="pl-pds">"</span></span>: {
+            <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>number<span class="pl-pds">"</span></span>,
+             <span class="pl-s"><span class="pl-pds">"</span>null<span class="pl-pds">"</span></span>: <span class="pl-c1">true</span>,
+            <span class="pl-s"><span class="pl-pds">"</span>unique<span class="pl-pds">"</span></span>: <span class="pl-c1">false</span>
+        }
+
+    }
+}
+</pre></div>
+
+<p>will generate </p>
+
+<div class="highlight highlight-source-java"><pre>
+<span class="pl-k">package</span> <span class="pl-smi">com.othree.apx</span>;
+
+<span class="pl-k">import</span> <span class="pl-smi">com.google.gson.annotations.SerializedName</span>;
+<span class="pl-k">import</span> <span class="pl-smi">com.j256.ormlite.field.DatabaseField</span>;
+<span class="pl-k">import</span> <span class="pl-smi">com.j256.ormlite.table.DatabaseTable</span>;
+
+<span class="pl-k">@DatabaseTable</span>(<span class="pl-c1">tableName</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>user<span class="pl-pds">"</span></span>)
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">User</span> {
+
+    <span class="pl-c">/**</span>
+<span class="pl-c">     * This is compulsory for both the database and to access models</span>
+<span class="pl-c">     * </span>
+<span class="pl-c">     */</span>
+    <span class="pl-k">@DatabaseField</span>(<span class="pl-c1">generatedId</span> <span class="pl-k">=</span> <span class="pl-c1">true</span>, <span class="pl-c1">columnName</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>)
+    <span class="pl-k">@SerializedName</span>(<span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>)
+    <span class="pl-k">private</span> <span class="pl-k">int</span> id;
+    <span class="pl-c">/**</span>
+<span class="pl-c">     * The Username of the LoggedIn individual</span>
+<span class="pl-c">     * &lt;p&gt;</span>
+<span class="pl-c">     * Whatever This is meant to do</span>
+<span class="pl-c">     * </span>
+<span class="pl-c">     */</span>
+    <span class="pl-k">@DatabaseField</span>(<span class="pl-c1">columnName</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>username<span class="pl-pds">"</span></span>, <span class="pl-c1">canBeNull</span> <span class="pl-k">=</span> <span class="pl-c1">true</span>, <span class="pl-c1">unique</span> <span class="pl-k">=</span> <span class="pl-c1">true</span>)
+    <span class="pl-k">@SerializedName</span>(<span class="pl-s"><span class="pl-pds">"</span>username<span class="pl-pds">"</span></span>)
+    <span class="pl-k">private</span> <span class="pl-smi">String</span> username <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>Anonymous<span class="pl-pds">"</span></span>;
+    <span class="pl-k">@DatabaseField</span>(<span class="pl-c1">columnName</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>pin<span class="pl-pds">"</span></span>, <span class="pl-c1">canBeNull</span> <span class="pl-k">=</span> <span class="pl-c1">true</span>, <span class="pl-c1">unique</span> <span class="pl-k">=</span> <span class="pl-c1">false</span>)
+    <span class="pl-k">@SerializedName</span>(<span class="pl-s"><span class="pl-pds">"</span>pin<span class="pl-pds">"</span></span>)
+    <span class="pl-k">private</span> <span class="pl-k">int</span> pin <span class="pl-k">=</span> <span class="pl-c1">1234</span>;
+    <span class="pl-k">@DatabaseField</span>(<span class="pl-c1">columnName</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>number<span class="pl-pds">"</span></span>, <span class="pl-c1">canBeNull</span> <span class="pl-k">=</span> <span class="pl-c1">true</span>, <span class="pl-c1">unique</span> <span class="pl-k">=</span> <span class="pl-c1">false</span>)
+    <span class="pl-k">@SerializedName</span>(<span class="pl-s"><span class="pl-pds">"</span>number<span class="pl-pds">"</span></span>)
+    <span class="pl-k">private</span> <span class="pl-k">double</span> number;
+
+    <span class="pl-c">/**</span>
+<span class="pl-c">     * No args constructor for use in serialization</span>
+<span class="pl-c">     * </span>
+<span class="pl-c">     */</span>
+    <span class="pl-k">public</span> <span class="pl-en">User</span>() {
+    }
+
+    <span class="pl-c">/**</span>
+<span class="pl-c">     * </span>
+<span class="pl-c">     * @param number</span>
+<span class="pl-c">     * @param pin</span>
+<span class="pl-c">     * @param username</span>
+<span class="pl-c">     */</span>
+    <span class="pl-k">public</span> <span class="pl-en">User</span>(<span class="pl-smi">String</span> <span class="pl-v">username</span>, <span class="pl-k">int</span> <span class="pl-v">pin</span>, <span class="pl-k">double</span> <span class="pl-v">number</span>) {
+        <span class="pl-v">super</span>();
+        <span class="pl-v">this</span><span class="pl-k">.</span>username <span class="pl-k">=</span> username;
+        <span class="pl-v">this</span><span class="pl-k">.</span>pin <span class="pl-k">=</span> pin;
+        <span class="pl-v">this</span><span class="pl-k">.</span>number <span class="pl-k">=</span> number;
+    }
+
+    <span class="pl-k">public</span> <span class="pl-k">int</span> <span class="pl-en">getId</span>() {
+        <span class="pl-k">return</span> id;
+    }
+
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">setId</span>(<span class="pl-k">int</span> <span class="pl-v">id</span>) {
+    }
+
+    <span class="pl-c">/**</span>
+<span class="pl-c">     * The Username of the LoggedIn individual</span>
+<span class="pl-c">     * &lt;p&gt;</span>
+<span class="pl-c">     * Whatever This is meant to do</span>
+<span class="pl-c">     * </span>
+<span class="pl-c">     * @return</span>
+<span class="pl-c">     *     The username</span>
+<span class="pl-c">     */</span>
+    <span class="pl-k">public</span> <span class="pl-smi">String</span> <span class="pl-en">getUsername</span>() {
+        <span class="pl-k">return</span> username;
+    }
+
+    <span class="pl-c">/**</span>
+<span class="pl-c">     * The Username of the LoggedIn individual</span>
+<span class="pl-c">     * &lt;p&gt;</span>
+<span class="pl-c">     * Whatever This is meant to do</span>
+<span class="pl-c">     * </span>
+<span class="pl-c">     * @param username</span>
+<span class="pl-c">     *     The username</span>
+<span class="pl-c">     */</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">setUsername</span>(<span class="pl-smi">String</span> <span class="pl-v">username</span>) {
+        <span class="pl-v">this</span><span class="pl-k">.</span>username <span class="pl-k">=</span> username;
+    }
+
+    <span class="pl-c">/**</span>
+<span class="pl-c">     * </span>
+<span class="pl-c">     * @return</span>
+<span class="pl-c">     *     The pin</span>
+<span class="pl-c">     */</span>
+    <span class="pl-k">public</span> <span class="pl-k">int</span> <span class="pl-en">getPin</span>() {
+        <span class="pl-k">return</span> pin;
+    }
+
+    <span class="pl-c">/**</span>
+<span class="pl-c">     * </span>
+<span class="pl-c">     * @param pin</span>
+<span class="pl-c">     *     The pin</span>
+<span class="pl-c">     */</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">setPin</span>(<span class="pl-k">int</span> <span class="pl-v">pin</span>) {
+        <span class="pl-v">this</span><span class="pl-k">.</span>pin <span class="pl-k">=</span> pin;
+    }
+
+    <span class="pl-c">/**</span>
+<span class="pl-c">     * </span>
+<span class="pl-c">     * @return</span>
+<span class="pl-c">     *     The number</span>
+<span class="pl-c">     */</span>
+    <span class="pl-k">public</span> <span class="pl-k">double</span> <span class="pl-en">getNumber</span>() {
+        <span class="pl-k">return</span> number;
+    }
+
+    <span class="pl-c">/**</span>
+<span class="pl-c">     * </span>
+<span class="pl-c">     * @param number</span>
+<span class="pl-c">     *     The number</span>
+<span class="pl-c">     */</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">setNumber</span>(<span class="pl-k">double</span> <span class="pl-v">number</span>) {
+        <span class="pl-v">this</span><span class="pl-k">.</span>number <span class="pl-k">=</span> number;
+    }
+
+}
+
+</pre></div>
+
+<p>This command will create a single Table with corresponding columns
+And also create a model file as seen above</p>
+
+<h2>
+<a id="why-is-apxjar-7mb" class="anchor" href="#why-is-apxjar-7mb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Why is apx.jar ~7mb?</h2>
+
+<p>This is because in contains certain libraries needed for a simple MVC REST applictaion </p>
+
+<ol>
+<li>GSON: A Java serialization/deserialization library that can convert Java Objects into JSON and back.
+link to project: <a href="https://github.com/google/gson">Google Gson</a>
+</li>
+<li>SQLite JDBC Driver: SQLite JDBC, developed by Taro L. Saito, is a library for accessing and creating SQLite database files   in Java. link to project <a href="https://github.com/xerial/sqlite-jdbc">Xserial SQLite JDBC</a>
+</li>
+<li>Unirest: Unirest in Java: Simplified, lightweight HTTP client library. <a href="http://unirest.io/java">http://unirest.io/java</a>
+link to project <a href="https://github.com/Mashape/unirest-java">Mashape Unirest-java</a>
+</li>
+<li>ORMLite Database Library <a href="http://ormlite.com/">ORMlite.com</a>
+</li>
+<li>JSONSchema2pojo Generates Java types from JSON Schema (or example JSON) and annotates those types for data-binding with Jackson 1.x or 2.x, Gson, etc <a href="http://www.jsonschema2pojo.org">http://www.jsonschema2pojo.org</a>   <a href="https://github.com/joelittlejohn/jsonschema2pojo">Project Link</a>
+</li>
+</ol>
+
+<p>All Libraries Remain work of the original Author</p>
+
+<h3>
+<a id="useful-links-and-resources" class="anchor" href="#useful-links-and-resources" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Useful Links and resources</h3>
+
+<ul>
+<li><a href="http://ormlite.com/javadoc/ormlite-core/doc-files/ormlite_2.html#Class-Setup">ORM Lite Documantation</a></li>
+<li><a href="https://github.com/joelittlejohn/jsonschema2pojo/wiki/Reference">JSONSchema2pojo Wiki reference</a></li>
+<li><a href="https://github.com/othreecodes/apxdemo">othreecodes/apxdemo (Demo)</a></li>
+</ul>
+
+<h3>
+<a id="todos" class="anchor" href="#todos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Todos</h3>
+
+<ul>
+<li>Generate Models (done)</li>
+<li>Include support for Other databases</li>
+<li>Make http connections neater</li>
+<li>A lot...
+Feel free to contribute.</li>
+</ul>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>The MIT License (MIT). Please see LICENSE.md for more information.</p>
+
+<pre><code>Copyright (c) 2016 Obi Uchenna David
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy,
+modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+</code></pre>
+
+<h3>
+<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+
+<p><a href="https://github.com/othreecodes" class="user-mention">@othreecodes</a> Obi Uchenna David</p>
+
+<h3>
+<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+<p>Having trouble use APX? email the author <a href="mailto:daviduchenna@outlook.com">daviduchenna@outlook.com</a> or open a new issue on the project page</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/othreecodes/APX">Apx</a> is maintained by <a href="https://github.com/othreecodes">othreecodes</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
