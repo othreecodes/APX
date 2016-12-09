@@ -20,8 +20,6 @@ Guidelines
 ----------
 
 Some simple guidelines to follow when contributing code:
-
-- Adhere to `PEP8`_.
 - Clean, well documented code.
 
 
