@@ -1,5 +1,5 @@
 ![](http://i.imgur.com/qkiAZJi.png)
-# A JavaFx Library For Making MVC Type Desktop Applications ![](https://img.shields.io/badge/othree-codes-yellowgreen.svg) ![](https://scrutinizer-ci.com/g/othreecodes/APX/badges/build.png?b=master) ![](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)
+# A JavaFx Library For Making MVC Type Desktop Applications ![](https://img.shields.io/badge/othree-codes-yellowgreen.svg) ![](https://scrutinizer-ci.com/g/othreecodes/APX/badges/build.png?b=master) ![https://saythanks.io/to/othreecodes](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)
 
 ### Installation
  - requires Java jdk > 7 for windows
@@ -275,17 +275,3 @@ The MIT License (MIT). Please see LICENSE.md for more information.
     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
     LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-
-
-
-
-
-
-
-
-
-
-
-
-
-
