@@ -1,6 +1,5 @@
 ![](http://i.imgur.com/qkiAZJi.png)
-# A JavaFx Library For Making MVC Type Desktop Applications ![](https://img.shields.io/badge/othree-codes-yellowgreen.svg) ![](https://scrutinizer-ci.com/g/othreecodes/APX/badges/build.png?b=master) ![https://saythanks.io/to/othreecodes](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)
-
+# A JavaFx Library For Making MVC Type Desktop Applications ![](https://img.shields.io/badge/othree-codes-yellowgreen.svg) ![](https://scrutinizer-ci.com/g/othreecodes/APX/badges/build.png?b=master) [![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/othreecodes)
 ### Installation
  - requires Java jdk > 7 for windows
  - requres openjdk-7 or 8 and openjfx for linux
