@@ -33,10 +33,10 @@ public class Main {
             System.out.println("\t\tapx create model ${Location of JSON File} - Creates a model corresponding\n\t\tto the JSON. Also creates a matching table in database");
             
              
-        } else if (args[0].equalsIgnoreCase("start")) {
+        } else if ("start".equalsIgnoreCase(args[0])) {
             String projectName = args[1];
             operations.startProject(projectName);
-        } else if (args[0].equalsIgnoreCase("g")) {
+        } else if ("g".equalsIgnoreCase(args[0])) {
             File f = new File("project.apxprop");
             if (!f.exists()) {
                 System.out.println("Not an APX Project!!!\n");
@@ -45,7 +45,7 @@ public class Main {
             }
             
             try {
-                if (args[1].equalsIgnoreCase("page")) {
+                if ("page".equalsIgnoreCase(args[1])) {
                     try {
                         operations.generatePage(args[2], f);
                     } catch (Exception e) {
@@ -60,7 +60,7 @@ public class Main {
                  
             }
             
-        } else if (args[0].equalsIgnoreCase("create")) {
+        } else if ("create".equalsIgnoreCase(args[0])) {
             File f = new File("project.apxprop");
             if (!f.exists()) {
                 System.out.println("Not an APX Project!!!\n");
@@ -68,7 +68,7 @@ public class Main {
                 System.exit(0);
             }
             
-            if (args[1].equalsIgnoreCase("model")) {
+            if ("model".equalsIgnoreCase(args[1])) {
                 
                 //File loction of the json file Containing the Json File to 
                 String fileLocation = args[2];
